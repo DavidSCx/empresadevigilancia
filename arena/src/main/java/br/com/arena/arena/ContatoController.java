@@ -61,12 +61,15 @@ public ModelAndView getcontato(){
 
 @GetMapping(value = "/cadastro")    
 public ModelAndView getCadastro() {
+    List<Contato> lista = new ArrayList<>();
+
+    lista = contatoRepository.findAll();
     Contato contato = new Contato();
 
     ModelAndView modelAndView = new ModelAndView("cadastro");
 
     modelAndView.addObject("contato", contato);
-
+    modelAndView.addObject("lista", lista);
     return modelAndView;
 }
 @GetMapping(value = "/acesso")    
@@ -109,7 +112,7 @@ return modelAndView;
         contatoRepository.deleteById(id);
 
       
-        return "redirect:/";
+        return "redirect:/cadastro";
     
 }
 }

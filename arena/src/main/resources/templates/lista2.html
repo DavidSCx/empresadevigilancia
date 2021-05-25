@@ -86,19 +86,7 @@ tr:nth-child(even) {
     <td th:each="contato: ${lista}" th:text="${contato.cidade}"></td>
 
   </tr>
-  <tr>
-    <td th:each="contato : ${lista}">
-        <a th:href="@{/detalhes/{id}(id=${contato.id})}">Detalhes do Contato</a></td>
-        </tr>
-        <tr>
-    <td th:each="contato : ${lista}">
-        <a th:href="@{/editar/{id}(id=${contato.id})}">Editar</a></td>
-      </tr>
-      <tr>
-    <td th:each="contato : ${lista}">
-        <a th:href="@{/deletar/{id}(id=${contato.id})}">Deletar</a></td>
-    </tr>
-    
+  
 </table>
  
     <a href="/">Inicio</a>

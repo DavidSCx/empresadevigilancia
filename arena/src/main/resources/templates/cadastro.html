@@ -91,6 +91,21 @@ form label {
     color: #FFFFFF;
     font-weight: bold;
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>
 </head>
 <body>
@@ -117,7 +132,7 @@ form label {
       </nav>
       <div class="meio">
     <h1>Cadastrar Colaboradores</h1>
-    
+
     <form method="POST" action="/adicionar">
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" th:value="${contato.nome}"/>
@@ -134,6 +149,34 @@ form label {
 
     </form>
 </div>
+<table>
+  <tr>
+    <th>Colaborador</th>
+    <th>Colaborador</th>
+    <th>Colaborador</th>
+  </tr>
+  <tr>
+    <td th:each="contato: ${lista}" th:text="${contato.nome}" ></td>
+  </tr>
+    <td th:each="contato: ${lista}" th:text="${contato.cargo}" ></td>
+</tr>
+    <td th:each="contato: ${lista}" th:text="${contato.cidade}"></td>
+
+  </tr>
+  <tr>
+    <td th:each="contato : ${lista}">
+        <a th:href="@{/detalhes/{id}(id=${contato.id})}">Detalhes do Contato</a></td>
+        </tr>
+        <tr>
+    <td th:each="contato : ${lista}">
+        <a th:href="@{/editar/{id}(id=${contato.id})}">Editar</a></td>
+      </tr>
+      <tr>
+    <td th:each="contato : ${lista}">
+        <a th:href="@{/deletar/{id}(id=${contato.id})}">Deletar</a></td>
+    </tr>
+    
+</table>
     <footer class="container-fluid text-center">
         <div class="imagem">
         <img src="logo.png" class="img-responsive" style="width:20%" alt="Image">
