@@ -28,10 +28,16 @@
     .footer{
   align-items: center;
 }
-.meio{
+    .meio{
   background-color: #d5fa06;
     }
-   
+    .row{
+  text-align: center;
+  margin-left: 15%;
+}
+    .botao{
+  margin-left: 15%;
+}
 </style>
 </head>
 <body>
@@ -48,31 +54,87 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li class="active"><a href="/">Inicio</a></li>
-              <li><a href="/cadastro">Colaboradores</a></li>
-              <li><a href="/sobre">Sobre</a></li>
-              <li><a href="/contato">Contato</a></li>
+              <li><a href="/acesso">Cadastro de Colaboradores</a></li>
+              <li><a href="/sobre">Sobre Nós</a></li>
               <li><a href="/lista2">Lista de Colaboradores</a></li>
+              <li><a href="/contato">Contato</a></li>
             </ul>
             </div>
         </div>
       </nav>
       <div class="meio">
-    <h1>Contato</h1>
+     <section class="mb-4">
 
-    <form method="POST" action="/adicionar">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome"/>
+     
+      <h2 class="h1-responsive font-weight-bold text-center my-4">Nos Contate</h2>
+  
+      <p class="text-center w-responsive mx-auto mb-5">
+        Você tem alguma pergunta? Por favor, não hesite em nos contatar diretamente. Nossa equipe lhe responderá muito em Breve.</p>
+  
+      <div class="row">
+  
+     
+          <div class="col-md-9 mb-md-0 mb-5 align-items=center">
+              <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+  
+               
+                  <div class="row">
+  
+                      
+                      <div class="col-md-6">
+                          <div class="md-form mb-0">
+                              <input type="text" id="name" name="name" class="form-control">
+                              <label for="name" class="">Nome</label>
+                          </div>
+                      </div>
+                   
+  
+              
+                      <div class="col-md-6">
+                          <div class="md-form mb-0">
+                              <input type="text" id="email" name="email" class="form-control">
+                              <label for="email" class="">Email</label>
+                          </div>
+                      </div>
+        
+  
+                  </div>
+      
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="md-form mb-0">
+                              <input type="text" id="subject" name="subject" class="form-control">
+                              <label for="subject" class="">Titulo do Assunto</label>
+                          </div>
+                      </div>
+                  </div>
 
-            <label for="tipo">Tipo</label>
-            <input type="text" name="tipo" id="tipo"/>
-
-            <label for="telefone">Telefone</label>
-            <input type="text" name="telefone" id="telefone"/>
-
-            <input type="submit" value="Salvar"/>
+                  <div class="row">
+  
+    
+                      <div class="col-md-12">
+  
+                          <div class="md-form">
+                              <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                              <label for="message">Sua Menssagem</label>
+                          </div>
+  
+                      </div>
+                  </div>
+ 
+  
+              </form>
+  
+              <div class="botao">
+                  <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Enviar</a>
+                  <a class="btn btn-primary" href="/">Voltar</a>
+              </div>
+              
+          </div>
+       </div>
+    </section>
 
     </form>
-    <a href="/">Voltar</a>
     </div>
     <footer class="container-fluid text-center">
         <div class="imagem">
@@ -80,6 +142,8 @@
         </div>
         <div class="footer">
         <p>Arena Vigilancia Privada Ltda</p>
+        <p>arenavigilante@gmail.com</p>
+        <p>Telefone: 48 9 8899-2211</p>
         <p>Rua São Pedro n° 903 - Areias - São José - SC</p>
         </p>
       </div>

@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script language=JavaScript>
+    
+      function Login(){
+      var done=0;
+      var username=document.login.username.value;
+      username=username.toLowerCase();
+      var password=document.login.password.value;
+      password=password.toLowerCase();
+      if (username=="admin" && password=="admin") { window.location="/cadastro"; done=1; }
+      if (done==0) { alert("login invalido!"); }
+      }
+      
+    </script>
   
   <style>
     
@@ -30,22 +43,11 @@
 }
     .meio{
   background-color: #d5fa06;
+  margin-left: 45%;
     }
-    table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+body{
+  background-color: #d5fa06;
+ }
 </style>
 </head>
 <body>
@@ -61,48 +63,37 @@ tr:nth-child(even) {
             </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Inicio</a></li>
-              <li><a href="/acesso">Cadastro de Colaboradores</a></li>
-              <li><a href="/sobre">Sobre Nós</a></li>
-              <li><a href="/lista2">Lista de Colaboradores</a></li>
-              <li><a href="/contato">Contato</a></li>
+                <li class="active"><a href="/">Inicio</a></li>
+                <li><a href="/acesso">Cadastro de Colaboradores</a></li>
+                <li><a href="/sobre">Sobre Nós</a></li>
+                <li><a href="/lista2">Lista de Colaboradores</a></li>
+                <li><a href="/contato">Contato</a></li>
             </ul>
             </div>
         </div>
       </nav>
       <div class="meio">
-    <h1>Lista de Colaboradores</h1>
-<table>
-  <tr>
-    <th>Colaborador</th>
-    <th>Colaborador</th>
-    <th>Colaborador</th>
-  </tr>
-  <tr>
-    <td th:each="contato: ${lista}" th:text="${contato.nome}" ></td>
-  </tr>
-    <td th:each="contato: ${lista}" th:text="${contato.cargo}" ></td>
-</tr>
-    <td th:each="contato: ${lista}" th:text="${contato.cidade}"></td>
-
-  </tr>
-  <tr>
-    <td th:each="contato : ${lista}">
-        <a th:href="@{/detalhes/{id}(id=${contato.id})}">Detalhes do Contato</a></td>
-        </tr>
-        <tr>
-    <td th:each="contato : ${lista}">
-        <a th:href="@{/editar/{id}(id=${contato.id})}">Editar</a></td>
-      </tr>
-      <tr>
-    <td th:each="contato : ${lista}">
-        <a th:href="@{/deletar/{id}(id=${contato.id})}">Deletar</a></td>
-    </tr>
+    <h1>Portal do Colaborador</h1>
     
-</table>
+    <form name=login>
+      <TABLE cellPadding=3 >
+        <TBODY>
+        <TR>
+          <TD colSpan=2>Acesso Restrito</TD></TR>
+          <TR>
+          <TD>usuário:</TD>
+          <TD><INPUT name=username></TD></TR>
+        <TR>
+          <TD>senha:</TD>
+          <TD><INPUT type=password name=password></TD></TR>
+        <TR>
+          <TD colSpan=2><INPUT onclick=Login() type=button value=Login></TD></TR></TBODY></TABLE></FORM>
+
  
-    <a href="/">Inicio</a>
-      </div>
+
+    </form>
+    <a href="/">Voltar</a>
+</div>
     <footer class="container-fluid text-center">
         <div class="imagem">
         <img src="logo.png" class="img-responsive" style="width:20%" alt="Image">

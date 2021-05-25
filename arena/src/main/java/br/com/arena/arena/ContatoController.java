@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -43,21 +43,39 @@ public ModelAndView getcontato(){
     ModelAndView modelAndView = new ModelAndView("contato");
     return modelAndView;
 }
+@GetMapping(value="/detalhes/{id}")
+    public ModelAndView getDetalhes(@PathVariable Long id) {
+       
+        Contato contato = new Contato();
+        contato = contatoRepository.findById(id).get();
 
+       
+        ModelAndView modelAndView = new ModelAndView("lista");
+
+      
+        modelAndView.addObject("contato", contato);
+
+    
+        return modelAndView;
+}
 
 @GetMapping(value = "/cadastro")    
-public ModelAndView getcadastro(){
+public ModelAndView getCadastro() {
+    Contato contato = new Contato();
+
     ModelAndView modelAndView = new ModelAndView("cadastro");
+
+    modelAndView.addObject("contato", contato);
+
+    return modelAndView;
+}
+@GetMapping(value = "/acesso")    
+public ModelAndView getacesso(){
+    ModelAndView modelAndView = new ModelAndView("acesso");
     return modelAndView;
 }
 @PostMapping(value = "/adicionar")
-public ModelAndView postAdicionar(@RequestParam String nome, @RequestParam String cargo, @RequestParam String cidade){
-
-    Contato contato = new Contato();
-
-    contato.setNome(nome);
-    contato.setCargo(cargo);
-    contato.setCidade(cidade);
+public ModelAndView postAdicionar(Contato contato) {
 
     contatoRepository.save(contato);
 
@@ -67,7 +85,31 @@ public ModelAndView postAdicionar(@RequestParam String nome, @RequestParam Strin
 
 
 return modelAndView;
+}
+@GetMapping(value="/editar/{id}")
+    public ModelAndView getEditar(@PathVariable Long id) {
+     
+        Contato contato = new Contato();
+        contato = contatoRepository.findById(id).get();
 
+     
+        ModelAndView modelAndView = new ModelAndView("cadastro");
 
+      
+        modelAndView.addObject("contato", contato);
+
+ 
+        return modelAndView;
+    }
+    
+
+    @GetMapping(value="/deletar/{id}")
+    public String getDeletar(@PathVariable Long id) {
+     
+        contatoRepository.deleteById(id);
+
+      
+        return "redirect:/";
+    
 }
 }
